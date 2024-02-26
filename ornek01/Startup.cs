@@ -20,21 +20,22 @@ namespace ornek01
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+           
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-               // endpoints.MapGet("/", async context =>
-               // {
-                //    await context.Response.WriteAsync("Hello World!");
-               // });
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Hello World!");
+                });
 
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapGet("/products", async context =>
+                {
+                    await context.Response.WriteAsync("Products list");
+                });
+                // endpoints.MapDefaultControllerRoute();
             });
         }
     }
